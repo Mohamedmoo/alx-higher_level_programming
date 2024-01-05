@@ -13,3 +13,13 @@ def find_peak(list_of_integers):
     if not list_of_integers:
         return None
     return list_of_integers[0]
+
+
+def _find_peak(lint, start, stop):
+    """Recursively finds peak"""
+    if stop - start < 2:
+        return None
+    mid = (start + stop) // 2
+    if lint[mid] >= lint[mid - 1] and lint[mid] >= lint[mid + 1]:
+        return lint[mid]
+    return _find_peak(lint, start, mid) or _find_peak(lint, mid, stop)
